@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import classes from './App.module.css'
-import weatherImage from './assets/sam-schooler-E9aetBe2w40-unsplash.jpg'
 import SearchForm from './components/SearchForm'
 import axios from 'axios'
 import Card from './components/Card'
@@ -26,19 +25,25 @@ const App = () => {
   },[city])
 
   return (
-    <div className={classes.container}>
-      <Card 
-        weather={weather}
-        error={error}
-      />
-      <SearchForm 
-        city={city}
-        setCity={setCity}
-      />
-      <img 
-        src={weatherImage} 
-        id={classes["weather-img"]}
-        alt="weather image" />
+    <div 
+      className={classes.container} 
+    >
+      <div 
+        className={classes.background}
+      >
+        <div className={classes["col-2"]}>
+          <SearchForm 
+            city={city}
+            setCity={setCity}
+          />
+        </div>
+        <div className={classes["col-8"]}>
+          <Card 
+            weather={weather}
+            error={error}
+          />
+        </div>
+      </div>
     </div>
   )
 }

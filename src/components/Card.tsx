@@ -12,7 +12,6 @@ const Card = ({ weather, error }) => {
           <p className={classes.temp}>{weather?.tempF}°</p>
           <p className={classes.weather}>{weather?.weather}</p>
           <p className={classes.wind}>{weather?.windSpeedMPH} mph</p>
-          <img src="https://www.pngitem.com/pimgs/m/152-1524736_weather-icon-png-transparent-png.png" />
           <br/>
           <p className={classes.humidity}>{weather?.humidity}%</p>
           {<ul>{Object.keys(weather).map((key) => (<li key={key}>{`${key}: ${weather[key] }`}</li>))}</ul> }
