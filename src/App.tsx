@@ -4,58 +4,46 @@ import SearchForm from './components/SearchForm'
 import axios from 'axios'
 import Card from './components/Card'
 import SidebarWeatherDetail from './components/SidebarWeatherDetail'
+import useGeolocation from './hooks/useGeolocation'
+import { 
+  api_id, 
+  api_secret, 
+  getTempCelc, 
+  getWeatherNow,
+  place, now
+} from './utils'
+
 
 const App = () => {
-  const api_id = import.meta.env.VITE_ID;
-  const api_secret = import.meta.env.VITE_SECRET;
   const [city, setCity ] = useState('')
   const [ error, setError ] = useState()
   const [ weather, setWeather ] = useState([])
-  const [ location, setLocation ] = useState({})
-  console.log("🚀 ~ file: App.tsx:15 ~ App ~ location:", location)
-  console.log("🚀 ~ file: App.tsx:14 ~ App ~ weather:", weather)
-  
-  const handleGeoLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        setLocation({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude
-        })
-      })
-    } else{
-       alert('Geolocation is not supported by this browser.')
-    }
-  }
-  // getting the name of the city
-  const place: string = weather[0]?.place.name
+  const { location, handleGeoLocation } = useGeolocation()
 
-  // getting an array of temperatures
-  const getTempCelc = () => weather?.map(el => el?.periods?.map(el => el?.tempC)) 
-  const getWeatherNow = () => weather?.map(el => el?.periods) 
   // getting the current weather
-  const currentWeather = getWeatherNow().flat(1)[0]
-  const tempArr = getTempCelc().flat(1)
+  const currentWeather = getWeatherNow(weather)
+  const tempArr = getTempCelc(weather)
   let minTempC: number, maxTempC: number
-  const now = new Date()
+
   if (tempArr.length > 0) {
     minTempC = Math.min(...tempArr)
     maxTempC = Math.max(...tempArr)
   }
-  
-  // const averageTemp = tempArr?.reduce((total: number, curr: number) => total + curr, 0) / tempArr?.length
-    
+
   useEffect(() => {
     handleGeoLocation()
-    const apiUrl = `https://api.aerisapi.com/conditions/${location.lat},${location.lon}?&from=${now}&to=+1day&limit=24&client_id=${api_id}&client_secret=${api_secret}`
-    axios.get(apiUrl)
-      .then(res =>  setWeather([...res.data.response]))
-      .catch(err => {
-        setError(err)
-        console.log(err)
-    }) 
-  },[])
-  
+    if (location.lat && location.lon) {
+      console.log('location', location.lat, location.lon);
+      const apiUrl = `https://api.aerisapi.com/conditions/${location.lat},${location.lon}?&from=${now}&to=+1day&limit=24&client_id=${api_id}&client_secret=${api_secret}`
+      axios.get(apiUrl)
+        .then(res =>  setWeather([...res.data.response]))
+        .catch(err => {
+          setError(err)
+          console.log(err)
+      }) 
+    }
+  },[location.lat, location.lon])
+
   useEffect(() => {
     if (city.length > 4) {
       const apiUrl = `http://api.aerisapi.com/conditions/${city},wa?from=now&to=+12hours&client_id=${api_id}&client_secret=${api_secret}`
