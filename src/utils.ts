@@ -17,4 +17,6 @@ export const averageTemp = (tempArr: number[]): number => {
   return tempArr?.reduce((total: number, curr: number) => total + curr, 0) / tempArr?.length
 } 
 
+export const API_BASE_URL: string = import.meta.env.VITE_BASE_API
+
 export const now = new Date()

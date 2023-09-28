@@ -34,6 +34,10 @@ body {
 
 .col-8 {
   width: 75%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0.6rem;
+  overflow-x: scroll;
 }
 
 @media screen and (max-width: 760px) {

@@ -1,7 +1,24 @@
 .card {
   border-radius: 2px;
-  width: 50%;
-  height: 40%;
+  min-width: 10rem;
+  height: 80%;
   border-radius: 5px;
   color: white;
+  padding: 0.6rem;
+  margin: 0.6rem;
+}
+
+.card:hover {
+  background-color: #e8e4e453;
+  cursor: pointer;
+}
+
+.card-detail {
+  border: 1px solid #d1cfcf53;
+  padding: 0.6rem;
+  border-radius: 5px;
+}
+
+.card-detail:hover {
+  border: none;
 }

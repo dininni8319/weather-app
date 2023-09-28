@@ -1,22 +1,25 @@
 import classes from './Card.module.css'
 
-// type Props = {}{}: Props
+type Props = { 
+  weather: unknown
+  error: any
+  place: string
+}
 
-const Card = ({ weather, error }) => {
+const Card = ({ weather, error, place }: Props) => {
+  
   return (
     <div className={classes.card}>
       {error && <p className={classes.error}>{error}</p>}
       {weather && (
-        <>
-          <h1>National Weather</h1>
-          <p className={classes.location}>{weather?.place?.name}</p>
-          {/* <p className={classes.temp}>{weather?.tempF}°</p> */}
-          <h2 className={classes.weather}>{weather?.weather}</h2>
-          <p className={classes.wind}>{weather?.windSpeedMPH} mph</p>
+        <div className={classes['card-detail']}>
+          <h2 className={classes.location}>{place.toLocaleUpperCase()}</h2>
+          <h3 className={classes.weather}>{weather?.weather}</h3>
+          <h4 className={classes.wind}>{weather?.tempC} {"°"}</h4>
           <br/>
           <p className={classes.humidity}>{weather?.humidity}%</p>
-          {<ul>{Object.keys(weather).map((key) => (<li key={key}>{`${key}: ${weather[key] }`}</li>))}</ul> }
-        </>
+          {/* {<ul>{Object.keys(weather).map((key) => (<li key={key}>{`${key}: ${weather[key] }`}</li>))}</ul> } */}
+        </div>
       )}
     </div>
   )

@@ -7,8 +7,7 @@ type Props = {
   place: string
   currentWeather: unknown
 }
-const api_id = import.meta.env.VITE_ID;
-const api_secret = import.meta.env.VITE_SECRET;
+
 const SidebarWeatherDetail = ({
   weather, 
   minTempC, 
@@ -30,7 +29,6 @@ const SidebarWeatherDetail = ({
         <p>L: {minTempC}</p>
       </div>
       <div>
-        {/* <img src={`http://api.aerisapi.com/${currentWeather?.icon}?&client_id=${api_id}&client_secret=${api_secret}`} alt="weather icon" /> */}
       </div>
     </div>
   )
