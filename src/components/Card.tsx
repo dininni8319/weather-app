@@ -8,9 +8,10 @@ const Card = ({ weather, error }) => {
       {error && <p className={classes.error}>{error}</p>}
       {weather && (
         <>
+          <h1>National Weather</h1>
           <p className={classes.location}>{weather?.place?.name}</p>
-          <p className={classes.temp}>{weather?.tempF}°</p>
-          <p className={classes.weather}>{weather?.weather}</p>
+          {/* <p className={classes.temp}>{weather?.tempF}°</p> */}
+          <h2 className={classes.weather}>{weather?.weather}</h2>
           <p className={classes.wind}>{weather?.windSpeedMPH} mph</p>
           <br/>
           <p className={classes.humidity}>{weather?.humidity}%</p>
