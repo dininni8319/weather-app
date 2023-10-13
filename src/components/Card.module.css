@@ -1,24 +1,29 @@
 .card {
   border-radius: 2px;
-  min-width: 10rem;
-  height: 80%;
+  min-width: 6rem;
+  height: 12rem;
   border-radius: 5px;
   color: white;
-  padding: 0.6rem;
+  padding: 0.2rem;
   margin: 0.6rem;
+  border: 2px solid #d1cfcf53;
 }
 
 .card:hover {
+  transition: 0.4s;
   background-color: #e8e4e453;
   cursor: pointer;
 }
 
 .card-detail {
-  border: 1px solid #d1cfcf53;
-  padding: 0.6rem;
+  padding: 0.2rem;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-detail:hover {
   border: none;
 }
+

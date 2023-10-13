@@ -16,7 +16,7 @@ const SearchForm = ({ city, setCity }: Props) => {
           type="text" 
           value={city}
           onChange={(e) => setCity(e.target.value)}
-          placeholder="Search" 
+          placeholder="Search a location" 
           className={classes.input}
         />
         <img src={searchSVG} alt="" />

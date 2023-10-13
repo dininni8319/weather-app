@@ -1,5 +1,5 @@
 body {
- background-color: #2C2C2C;
+ background-color: #303030;
  box-sizing: border-box;
  width: 100vw;
  min-height: 100vh;
@@ -13,31 +13,37 @@ body {
 }
 
 .background {
+  background-color: #111015;
   width: 90vw;
-  height: 90vh;
+  height: 95vh;
   border-radius: 10px;
-  background-image: url('/src/components/assets/sam-schooler-E9aetBe2w40-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
-  opacity: 0.8;
 }
 
 .col-2 {
   width: 30%;
   height: 100%;
-  border-right: 1px solid #d1cfcf53;
+  border-right: 2px solid #d1cfcf53;
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
 }
 
 .col-8 {
-  width: 75%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 0.6rem;
-  overflow-x: scroll;
+  width: 100%;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 0.3rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .col-8 {
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .background { 
+    overflow-y: scroll;
+  }
 }
 
 @media screen and (max-width: 760px) {
@@ -60,9 +66,9 @@ body {
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
   }
+  
   .col-8 {
     width: 100%;
-    display: flex;
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 }

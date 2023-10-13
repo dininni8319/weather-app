@@ -20,3 +20,14 @@ export const averageTemp = (tempArr: number[]): number => {
 export const API_BASE_URL: string = import.meta.env.VITE_BASE_API
 
 export const now = new Date()
+
+export const convertDate = (date: string) => {
+  const newDate = new Date(date)
+  return newDate.toLocaleString('en-US', { 
+    hour: 'numeric', 
+    minute: 'numeric', 
+    hour12: true,
+    month: 'short',
+    day: 'numeric', 
+  })
+}

@@ -1,4 +1,5 @@
 import classes from './Card.module.css'
+import { convertDate } from '../utils'
 
 type Props = { 
   weather: unknown
@@ -13,12 +14,12 @@ const Card = ({ weather, error, place }: Props) => {
       {error && <p className={classes.error}>{error}</p>}
       {weather && (
         <div className={classes['card-detail']}>
-          <h2 className={classes.location}>{place.toLocaleUpperCase()}</h2>
-          <h3 className={classes.weather}>{weather?.weather}</h3>
-          <h4 className={classes.wind}>{weather?.tempC} {"°"}</h4>
+          <h2 className='uppercase p-1'>{place.slice(0,10)}</h2>
+          <h3 className={classes.weather}>{weather.weather}</h3>
+          <h4 className={classes.wind}>{weather.tempC} {"°"}</h4>
+          <p>{convertDate(weather.dateTimeISO)} </p>
+          <img src={`../../public/weather-icons/${weather.icon}`} alt="weather icon" />
           <br/>
-          <p className={classes.humidity}>{weather?.humidity}%</p>
-          {/* {<ul>{Object.keys(weather).map((key) => (<li key={key}>{`${key}: ${weather[key] }`}</li>))}</ul> } */}
         </div>
       )}
     </div>

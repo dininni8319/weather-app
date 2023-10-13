@@ -10,13 +10,14 @@ import {
   getWeatherNow,
   place,
 } from './utils';
-
+import LoadingSkeleton from './components/LoadingSkeletonWeatherDetail';
+import LoadingSkeletonCard from './components/LoadingSkeletonCards';
 
 const App = () => {
   const [city, setCity] = useState('');
   const [error, setError] = useState(null);
   const [weather, setWeather] = useState([]);
-  
+  const arr = [0,1,2,3,4,5,6,7,8,9,10,11]
   const { location, handleGeoLocation } = useGeolocation();
   const namePlace = place(weather)
 
@@ -53,27 +54,31 @@ const App = () => {
       <div className={classes.background}>
         <div className={classes["col-2"]}>
           <SearchForm city={city} setCity={setCity} />
-          <div className="w-full h-96 flex flex-col justify-center">
-            <SidebarWeatherDetail
+          <div className="w-full sm:h-40 md:h-96 flex flex-col justify-center items-center">
+            {currentWeather ? <SidebarWeatherDetail
               weather={tempArr}
               minTempC={minTempC}
               maxTempC={maxTempC}
               place={namePlace}
               currentWeather={currentWeather}
-            />
+            /> : <LoadingSkeleton />
+            }
           </div>
         </div>
-        <div className={classes["col-8"]}>
-           {
-            weather[0]?.periods?.map((item, index) => (
-              <Card
-                key={index}
-                weather={item}
-                place={namePlace}
-                error={error}
-              />
-            ))
-           }
+        <div className='w-full text-center'>
+          <h2 className='text-white sm:text-xl md:text-2xl py-5'>Weather Prediction in the next 15 Hours</h2>
+          <div className={classes["col-8"]}>
+              {
+                weather[0] ?  weather[0].periods?.map((item: unknown, index: number) => (
+                  <Card
+                    key={index}
+                    weather={item}
+                    place={namePlace}
+                    error={error}
+                  /> 
+                )) : arr.map((items: number) => <LoadingSkeletonCard />)
+              }
+          </div>
         </div>
       </div>
     </div>
