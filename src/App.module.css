@@ -13,11 +13,28 @@ body {
 }
 
 .background {
-  background-color: #111015;
   width: 90vw;
   height: 95vh;
-  border-radius: 10px;
   display: flex;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.dark-theme {
+  background-color: #111015;
+  color: white;
+  border-radius: 10px;
+}
+
+.light-theme {
+  background-color: #D3D3D3;
+  color: black;
+  border-radius: 10px;
 }
 
 .col-2 {
