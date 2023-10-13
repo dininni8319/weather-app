@@ -10,12 +10,15 @@ import {
   getWeatherNow,
   place,
   arr,
+  api_id,
+  api_secret
 } from './utils';
 import LoadingSkeleton from './components/LoadingSkeletonWeatherDetail'
 import LoadingSkeletonCard from './components/LoadingSkeletonCards'
 import { useTheme } from './hooks/useTheme'
 import darkImg from './components/assets/night-mode.svg'
 import lightImg from './components/assets/light-mode.svg'
+import WeatherMap from './components/WeatherMap'
 
 const App = () => {
   const [city, setCity] = useState('');
@@ -69,6 +72,13 @@ const App = () => {
               /> : <LoadingSkeleton />
               }
             </div>
+            <img
+              src={`https://maps.aerisapi.com/${api_id}_${api_secret}/flat,radar,admin/300x200/minneapolis,mn,5/current.png`}
+              style={{ width: "300px", height: "200px" }}
+              alt="Weather Map"
+            />
+
+            {/* <WeatherMap /> */}
           </div>
           <div className='w-full'>
             <div className='flex justify-center md:justify-end w-full'>
@@ -94,7 +104,6 @@ const App = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

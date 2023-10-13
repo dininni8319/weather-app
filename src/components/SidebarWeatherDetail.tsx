@@ -1,4 +1,5 @@
 import classes from './SidebarWeatherDetail.module.css'
+import { convertDate } from '../utils'
 
 type Props = {
   weather: number[]
@@ -29,6 +30,7 @@ const SidebarWeatherDetail = ({
         <p>L: {minTempC}</p>
       </div>
       <div>
+         <p>{convertDate(currentWeather.dateTimeISO)} </p>
       </div>
     </div>
   )

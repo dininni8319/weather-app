@@ -15,7 +15,7 @@ const Card = ({ weather, error, place }: Props) => {
       <div className={classes.card}>
         {error && <p className={classes.error}>{error}</p>}
         {weather && (
-          <div className={`${classes['card-detail']} ${isDarkMode ? '' : 'bg-green-600'}`}>
+          <div className={`${classes['card-detail']} ${isDarkMode ? '' : 'bg-green-700'}`}>
             <h2 className='uppercase p-1'>{place.slice(0,10)}</h2>
             <h3 className={classes.weather}>{weather.weather}</h3>
             <h4 className={classes.wind}>{weather.tempC} {"°"}</h4>
