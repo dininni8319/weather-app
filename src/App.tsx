@@ -17,6 +17,7 @@ import { useTheme } from './hooks/useTheme'
 import darkImg from './components/assets/night-mode.svg'
 import lightImg from './components/assets/light-mode.svg'
 import WeatherMap from './components/WeatherMap'
+import LoadingMapSkeleton from './components/LoadingMapSkeleton'
 
 const App = () => {
   const [city, setCity] = useState('Zurich');
@@ -28,7 +29,7 @@ const App = () => {
 
   useEffect(() => {
     handleGeoLocation();
-    if (location.lat && location.lon) {
+    if (location.lat && location.lon || city.lenght > 3) {
       fetchWeatherData(`${location.lat},${location.lon}`, true)
         .then((res) => setWeather([...res.data.response]))
         .catch((err) => {
@@ -36,7 +37,7 @@ const App = () => {
           console.error(err);
         });
     }
-  }, [location.lat, location.lon]);
+  }, [location.lat, location.lon, city]);
 
   useEffect(() => {
     if (city.length > 2) {
@@ -60,7 +61,7 @@ const App = () => {
         <div className={`${classes.background}`}>
           <div className={classes["col-2"]}>
             <SearchForm city={city} setCity={setCity} />
-            <div className="w-full sm:h-40 md:h-96 flex flex-col justify-center items-center">
+            <div className="w-full sm:h-50 md:h-96 flex flex-col justify-center items-center">
               {currentWeather ? <SidebarWeatherDetail
                 weather={tempArr}
                 minTempC={minTempC}
@@ -70,7 +71,7 @@ const App = () => {
               /> : <LoadingSkeleton />
               }
             </div>
-             <WeatherMap location={location} />
+             {location.lat ? <WeatherMap location={location} /> : <LoadingMapSkeleton />}
         
           </div>
           <div className='w-full'>

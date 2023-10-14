@@ -17,7 +17,9 @@ const SidebarWeatherDetail = ({
   place, 
   currentWeather
 }: Props) => {
+  
   const { isDarkMode } = useTheme()
+
   return (
     <div className={classes['weather-detail']}>
       <div className={`${isDarkMode ? 'bg-[#ACC9DD] p-3 rounded-md text-black text-center' : "bg-white p-3 rounded-md text-center"}`}>
@@ -28,8 +30,8 @@ const SidebarWeatherDetail = ({
             <p className='capitalize pe-2'>Humidity: {currentWeather?.humidity}%</p>
             <p className='capitalize'>{currentWeather?.windSpeedKPH} kph</p>
           </div>
-          <div className='flex'>
-            <p className='pe-2'>H: {maxTempC}</p>
+          <div className='flex w-full'>
+            <p className='px-5'>H: {maxTempC}</p>
             <p>L: {minTempC}</p>
           </div>
           <div>

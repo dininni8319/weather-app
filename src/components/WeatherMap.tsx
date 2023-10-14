@@ -13,8 +13,8 @@ const WeatherMap = ({ location }:{location:Props}) => {
        src={mapURL}
        style={
          {
-           width: '15rem', 
-           height: '15rem', 
+           width: '80%', 
+           height: '60%', 
            borderRadius: "5px"
          }
        }

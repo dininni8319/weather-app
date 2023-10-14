@@ -18,7 +18,7 @@ const Card = ({ weather, error, place }: Props) => {
           <div className={`${classes['card-detail']} ${isDarkMode ? '' : 'bg-green-700 p-2'}`}>
             <h2 className='uppercase p-1'>{place.slice(0,10)}</h2>
             <h3 className={classes.weather}>{weather.weather}</h3>
-            <h4 className={classes.wind}>{weather.tempC} {"°"}</h4>
+            <h4>{weather.tempC} {"°"}</h4>
             <p>{convertDate(weather.dateTimeISO)} </p>
             <img src={`../../public/weather-icons/${weather.icon}`} alt="weather icon" />
             <br/>
