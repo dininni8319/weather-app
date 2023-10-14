@@ -9,9 +9,7 @@ import {
   getTempCelc,
   getWeatherNow,
   place,
-  arr,
-  api_id,
-  api_secret
+  arr
 } from './utils';
 import LoadingSkeleton from './components/LoadingSkeletonWeatherDetail'
 import LoadingSkeletonCard from './components/LoadingSkeletonCards'
@@ -21,7 +19,7 @@ import lightImg from './components/assets/light-mode.svg'
 import WeatherMap from './components/WeatherMap'
 
 const App = () => {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState('Zurich');
   const [error, setError] = useState(null);
   const [weather, setWeather] = useState([]);
   const { isDarkMode, toggleTheme } = useTheme()
@@ -72,13 +70,8 @@ const App = () => {
               /> : <LoadingSkeleton />
               }
             </div>
-            <img
-              src={`https://maps.aerisapi.com/${api_id}_${api_secret}/flat,radar,admin/300x200/minneapolis,mn,5/current.png`}
-              style={{ width: "300px", height: "200px" }}
-              alt="Weather Map"
-            />
-
-            {/* <WeatherMap /> */}
+             <WeatherMap location={location} />
+        
           </div>
           <div className='w-full'>
             <div className='flex justify-center md:justify-end w-full'>
@@ -89,7 +82,7 @@ const App = () => {
                   />
                 </button>
             </div>
-            <h2 className={`sm:text-xl md:text-3xl py-3 text-center`}>Weather Prediction in the next 15 Hours</h2>
+            <h2 className={`sm:text-xl md:text-2xl py-3 text-center`}>Weather Prediction in the next 15 Hours</h2>
             <div className={classes["col-8"]}>
                 {
                   weather[0] ?  weather[0].periods?.map((item: unknown, index: number) => (
@@ -99,7 +92,7 @@ const App = () => {
                       place={namePlace}
                       error={error}
                     /> 
-                  )) : arr.map((items: number) => <LoadingSkeletonCard />)
+                  )) : arr.map(() => <LoadingSkeletonCard />)
                 }
             </div>
           </div>
