@@ -54,7 +54,7 @@ const App = () => {
           console.error(err);
         });
       //@ts-ignore
-  }, [location.lat, location.lon]);
+  }, [location.lat, location.lon, city]);
   
   useEffect(() => {
       if (city.length > 2) {

@@ -7,6 +7,7 @@ type Geolocation = {
 
 const useGeolocation = () => {
   const [ location, setLocation ] = useState<{location: Geolocation} | unknown>({})
+  
   const handleGeoLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
