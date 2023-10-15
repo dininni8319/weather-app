@@ -17,6 +17,7 @@ import {
 import LoadingSkeleton from './components/LoadingSkeletonWeatherDetail'
 import LoadingSkeletonCard from './components/LoadingSkeletonCards'
 import { ThemeContext } from './Context/ThemeContext'
+import useCityCoordinates from './hooks/useCityCoordinates'
 import darkImg from './components/assets/night-mode.svg'
 import lightImg from './components/assets/light-mode.svg'
 import WeatherMap from './components/WeatherMap'
@@ -37,7 +38,8 @@ const App = () => {
   const theme = useContext(ThemeContext)
   const { location, handleGeoLocation } = useGeolocation();
   const namePlace = place(weatherData[0] as Place)
-
+  const {coordinates } = useCityCoordinates(city)
+  console.log("🚀 ~ file: App.tsx:42 ~ App ~ coordinates:", coordinates)
   const checkLocation = location && (
     typeof location === 'object' && 'lat' in location
   )
@@ -100,7 +102,9 @@ const App = () => {
                 }
               </div>
               {checkLocation ? 
-                <WeatherMap location={location as ILocation} /> : 
+                <WeatherMap 
+                  coordinates={coordinates.lat > 0 && coordinates || location} 
+                 /> : 
                 <LoadingMapSkeleton />
               }
             </div>
