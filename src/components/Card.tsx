@@ -28,7 +28,6 @@ const Card = ({ weather, error, place }: Props) => {
           <p>{convertDate(weather.dateTimeISO)} </p>
           
           <img src={`${CLOUD_ICONS}${weather.icon}`} alt="weather icon" />
-          {/* <img src={`../../public/weather-icons/${weather.icon}`} alt="weather icon" /> */}
           <br/>
         </div>
       )}

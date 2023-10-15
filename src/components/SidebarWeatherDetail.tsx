@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import classes from './SidebarWeatherDetail.module.css'
 import { CLOUD_ICONS, convertDate } from '../utils'
+console.log("🚀 ~ file: SidebarWeatherDetail.tsx:4 ~ CLOUD_ICONS:", CLOUD_ICONS)
 import { ThemeContext }  from '../Context/ThemeContext'
 import { CurrentWeather } from '../application-types'
 
@@ -40,7 +41,6 @@ const SidebarWeatherDetail = ({
           </div>
           <div className='flex justify-center'>
             <img src={`${CLOUD_ICONS}${currentWeather.icon}`} alt="weather icon" />
-            {/* <img src={`../../public/weather-icons/${currentWeather.icon}`} alt="weather icon" /> */}
           </div>
       </div>
     </div>
