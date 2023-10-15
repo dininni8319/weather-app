@@ -7,7 +7,7 @@ import SearchForm from './components/SearchForm'
 import Card from './components/Card'
 import SidebarWeatherDetail from './components/SidebarWeatherDetail'
 import useGeolocation from './hooks/useGeolocation'
-import { fetchWeatherData } from './weatherService'
+import { fetchWeatherData } from './service/weatherService'
 import {
   getTempCelc,
   getWeatherNow,

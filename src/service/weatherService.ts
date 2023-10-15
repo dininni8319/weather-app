@@ -4,11 +4,12 @@ import {
   api_secret,
   now,
   API_BASE_URL
-} from './utils';
+} from '../utils';
 
 export const fetchWeatherData = (cityOrLatLon: string, isLatLon = false) => {
+  console.log("🚀 ~ file: weatherService.ts:10 ~ fetchWeatherData ~ cityOrLatLon:", cityOrLatLon)
   let apiUrl;
-
+  
   if (isLatLon) {
     apiUrl = `${API_BASE_URL}${cityOrLatLon}?&from=now&to=+14hours&client_id=${api_id}&client_secret=${api_secret}`;
   } else {
