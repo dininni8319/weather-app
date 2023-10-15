@@ -5,21 +5,20 @@ export const BASE_URL = import.meta.env.VITE_BASE_API_URL
 export const arr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 
 // getting an array of temperatures
-export const getTempCelc = (weather: unknown) => {
-  const rangeWeather = weather?.map(el => el?.periods?.map((el: unknown) => el?.tempC)).flat(1) 
+export const getTempCelc = (weather: { periods?: { tempC?: number }[] }[]) => {
+  const rangeWeather = weather?.map(el => el.periods?.map((el) => el?.tempC)) 
   return rangeWeather
 }
 // getting the current weather 
-export const getWeatherNow = (weather: unknown) => weather?.map((el: unknown )=> el?.periods).flat(1)[0]
+export const getWeatherNow = (weather: { periods?: { tempC?: number }[] }[]) => weather?.map((el) => el?.periods).flat(1)[0]
 
 // getting the name of the city
-export const place = (weather: unknown) => weather[0]?.place.name
+export const place = (weather: { place: { name: string } }) => weather?.place.name
 
 // getting the average temperature
 export const averageTemp = (tempArr: number[]): number => {
   return tempArr?.reduce((total: number, curr: number) => total + curr, 0) / tempArr?.length
 } 
-
 
 export const now = new Date()
 

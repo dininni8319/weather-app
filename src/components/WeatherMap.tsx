@@ -1,10 +1,10 @@
 import { api_id, api_secret } from "../utils"
 
-type Props = {
-  lat: string
-  lon: string
+interface  IProps {
+  lat: number
+  lon: number
 }
-const WeatherMap = ({ location }:{location:Props}) => {
+const WeatherMap = ({ location }:{location: IProps}) => {
 
   const mapURL = `https://maps.aerisapi.com/${api_id}_${api_secret}/flat,admin,radar/250x250/${location.lat},${location.lon},8/current.png`;
   return (

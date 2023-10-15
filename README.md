@@ -28,3 +28,6 @@ If you are developing a production application, we recommend updating the config
 
 React loading skeleton package 
 - install  pnpm i react-loading-skeleton
+
+#react places
+- pnpm install --save react-places-autocomplete

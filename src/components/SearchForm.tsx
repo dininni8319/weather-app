@@ -1,7 +1,9 @@
+import { useContext } from 'react'
 import classes from './SearchForm.module.css'
 import searchSVG from './assets/search.svg'
 import termometerSVG from './assets/termometer.svg'
-import { useTheme } from '../hooks/useTheme'
+import { ThemeContext } from '../Context/ThemeContext'
+
 
 type Props = {
   city: string,
@@ -9,11 +11,11 @@ type Props = {
 }
 
 const SearchForm = ({ city, setCity }: Props) => {
-  const { isDarkMode } = useTheme()
+  const theme = useContext(ThemeContext)
 
   return (
     <form className={classes.form}>
-      <div className={isDarkMode ? "bg-[#1B1B1D] rounded-md" : "bg-transparent"}>
+      <div className={theme?.isDarkMode ? "bg-[#1B1B1D] rounded-md" : "bg-transparent"}>
           <div className={classes["form-input"]}>
             <img src={termometerSVG} alt="" />
             <input 
