@@ -44,15 +44,17 @@ const App = () => {
 
   useEffect(() => {
     handleGeoLocation();
-      fetchWeatherData(
-        `${(location as ILocation).lat},${(location as ILocation).lon}`, 
-        true
-      )
-        .then((res) => setWeatherData(res.data.response))
-        .catch((err) => {
-          setError(err);
-          console.error(err);
-        });
+      if (checkLocation) {
+        fetchWeatherData(
+          `${(location as ILocation).lat},${(location as ILocation).lon}`, 
+          true
+        )
+          .then((res) => setWeatherData(res.data.response))
+          .catch((err) => {
+            setError(err);
+            console.error(err);
+          });
+      }
       //@ts-ignore
   }, [location.lat, location.lon, city]);
   
@@ -126,7 +128,7 @@ const App = () => {
                         place={namePlace}
                         error={error as  string | null}
                       /> 
-                    )) : arr.map(() => <LoadingSkeletonCard />)
+                    )) : arr.map((item: number) => <LoadingSkeletonCard key={item} />)
                   }
               </div>
             </div>
