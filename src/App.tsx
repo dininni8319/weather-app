@@ -39,7 +39,6 @@ const App = () => {
   const { location, handleGeoLocation } = useGeolocation();
   const namePlace = place(weatherData[0] as Place)
   const {coordinates } = useCityCoordinates(city)
-  console.log("🚀 ~ file: App.tsx:42 ~ App ~ coordinates:", coordinates)
   const checkLocation = location && (
     typeof location === 'object' && 'lat' in location
   )
@@ -103,6 +102,7 @@ const App = () => {
               </div>
               {checkLocation ? 
                 <WeatherMap 
+                  //@ts-ignore
                   coordinates={coordinates.lat > 0 && coordinates || location} 
                  /> : 
                 <LoadingMapSkeleton />
