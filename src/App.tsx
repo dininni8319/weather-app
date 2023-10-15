@@ -74,7 +74,7 @@ const App = () => {
   const minTempC = tempArr.length > 0 ? Math.min(...tempArr) : undefined;
   // @ts-ignore 
   const maxTempC = tempArr.length > 0 ? Math.max(...tempArr) : undefined;
-
+  
   return (
       <div className={classes.container}>
         <div className={`${theme?.isDarkMode ? classes['dark-theme'] : classes['light-theme']}`}>
