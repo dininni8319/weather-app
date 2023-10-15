@@ -12,7 +12,6 @@ const useCityCoordinates = (cityName: string) => {
             const response = await axios.get(
               `https://maps.googleapis.com/maps/api/geocode/json?address=${cityName}&key=${GEOCODE_KEYS}`
             );
-            console.log("🚀 ~ file: useCityCoordinates.ts:19 ~ handleGetCoordinates ~ location:", response)
       
             if (response.data.results.length > 0) {
               
