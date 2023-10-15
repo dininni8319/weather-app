@@ -2,6 +2,7 @@ export const api_id = import.meta.env.VITE_ID;
 export const api_secret = import.meta.env.VITE_SECRET;
 export const API_BASE_URL: string = import.meta.env.VITE_BASE_API
 export const BASE_URL = import.meta.env.VITE_BASE_API_URL
+export const CLOUD_ICONS = import.meta.env.VITE_CLOUD_ICONS
 export const arr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 
 // getting an array of temperatures

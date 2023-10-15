@@ -1,5 +1,5 @@
 import classes from './Card.module.css'
-import { convertDate } from '../utils'
+import { CLOUD_ICONS, convertDate } from '../utils'
 import { ThemeContext } from '../Context/ThemeContext'
 import { useContext } from 'react'
 
@@ -26,7 +26,9 @@ const Card = ({ weather, error, place }: Props) => {
           <h3 className={classes.weather}>{weather.weather}</h3>
           <h4>{weather.tempC} {"°"}</h4>
           <p>{convertDate(weather.dateTimeISO)} </p>
-          <img src={`../../public/weather-icons/${weather.icon}`} alt="weather icon" />
+          
+          <img src={`${CLOUD_ICONS}${weather.icon}`} alt="weather icon" />
+          {/* <img src={`../../public/weather-icons/${weather.icon}`} alt="weather icon" /> */}
           <br/>
         </div>
       )}
