@@ -9,7 +9,7 @@ export const arr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
 // getting an array of temperatures
 export const getTempCelc = (weather: { periods?: { tempC?: number }[] }[]) => {
   const rangeWeather = weather?.map(el => el.periods?.map((el) => el?.tempC)) 
-  return rangeWeather
+  return rangeWeather.flat(1)
 }
 // getting the current weather 
 export const getWeatherNow = (weather: { periods?: { tempC?: number }[] }[]) => weather?.map((el) => el?.periods).flat(1)[0]
